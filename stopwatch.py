@@ -2,6 +2,12 @@ class StopWatch():
     def __init__() -> None:
         return
     
+    def start() -> None:
+        return
+
+    def stop() -> None:
+        return
+
     def __str__() -> str:
         return ""
 
