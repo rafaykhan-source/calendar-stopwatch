@@ -1,3 +1,16 @@
+"""A class representing a StopWatch.
+
+This module defines the StopWatch ADT, which stores information and supports 
+operations relevant to logic starting and stopping a stopwatch.
+
+Typical usage example:
+
+  stopwatch = StopWatch()
+  stopwatch.start()
+  stopwatch.stop()
+"""
+
+
 class StopWatch:
     def __init__(self) -> None:
         return
