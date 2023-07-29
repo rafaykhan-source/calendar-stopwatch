@@ -15,9 +15,12 @@ from datetime import datetime
 
 class StopWatch:
     def __init__(self) -> None:
-        self.__started = False
-        self.__stopped = False
-        self.__start_time = None
+        self.__started : bool = False
+        "Whether the StopWatch has started."
+        self.__stopped : bool = False
+        "Whether the StopWatch has stopped."
+        self.__start_time : datetime = None
+        "The start date and time of the StopWatch"
         return
 
     def start(self) -> None:
