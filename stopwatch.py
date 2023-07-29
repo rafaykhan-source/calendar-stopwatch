@@ -19,9 +19,9 @@ class StopWatch:
         "Whether the StopWatch has started."
         self.__stopped: bool = False
         "Whether the StopWatch has stopped."
-        self.__start_time: datetime = None
+        self.start_time: datetime = None
         "The start date and time of the StopWatch"
-        self.__stop_time: datetime = None
+        self.stop_time: datetime = None
         "The stop date and time of the StopWatch"
         return
 
@@ -32,7 +32,7 @@ class StopWatch:
             return
 
         self.__started = True
-        self.__start_time = datetime.now()
+        self.start_time = datetime.now()
         return
 
     def stop(self) -> None:
@@ -45,14 +45,14 @@ class StopWatch:
             return
 
         self.__stopped = True
-        self.__stop_time = datetime.now()
+        self.stop_time = datetime.now()
         return
 
     def __str__(self) -> str:
         if self.__started and self.__stopped:
-            return f"{self.__stop_time - self.__start_time}"
+            return f"{self.stop_time - self.start_time}"
         if self.__started:
-            return f"{datetime.now() - self.__start_time}"
+            return f"{datetime.now() - self.start_time}"
         return "StopWatch has not yet been started."
 
 
