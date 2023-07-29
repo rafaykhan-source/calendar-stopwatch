@@ -20,7 +20,7 @@ class Session:
         "A general title for the timed session."
         self.description: str = description
         "A description for the session."
-        self.stopwatch: StopWatch = None
+        self.stopwatch: StopWatch = StopWatch()
         "A stopwatch for the session."
         self.__began: bool = False
         "Whether the session has begun."
@@ -34,7 +34,7 @@ class Session:
             print("Error: Cannot begin Session that has already begun.")
             return
         self.__began = True
-        # TODO: Implement a Begin Functionality
+        self.stopwatch.start()
         return
 
     def end(self) -> None:
@@ -58,7 +58,8 @@ Duration: {self.stopwatch}
 
 
 def main() -> None:
-    # TODO: Add Unit Testing
+    session = Session(title="Marshmallow Development", description="Doing Intensive Refactoring")
+    print(session)
     return
 
 
