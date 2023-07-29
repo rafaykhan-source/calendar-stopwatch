@@ -32,7 +32,6 @@ class StopWatch:
             return
 
         self.__started = True
-        # TODO: Implement a Start Functionality
         self.__start_time = datetime.now()
         return
 
@@ -46,7 +45,6 @@ class StopWatch:
             return
 
         self.__stopped = True
-        # TODO: Implement a Stop Functionality
         self.__stop_time = datetime.now()
         return
 
@@ -59,7 +57,6 @@ class StopWatch:
 
 
 def main() -> None:
-    # TODO: Add Unit Testing
     stopwatch = StopWatch()
     print(stopwatch)
     stopwatch.start()
