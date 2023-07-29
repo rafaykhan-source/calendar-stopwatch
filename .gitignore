@@ -2,3 +2,4 @@
 **/__pycache__/**
 gcal_api_exploration
 credentials.json
+token.json
