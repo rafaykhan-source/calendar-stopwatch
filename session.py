@@ -46,7 +46,7 @@ class Session:
             print("Error: Cannot end Session that has already ended.")
             return
         self.__ended = True
-        # TODO: Implement a End Functionality
+        self.stopwatch.stop()
         return
 
     def __str__(self) -> str:
@@ -61,6 +61,10 @@ def main() -> None:
     session = Session(
         title="Marshmallow Development", description="Doing Intensive Refactoring"
     )
+    print(session)
+    session.begin()
+    print(session)
+    session.end()
     print(session)
     return
 
