@@ -21,6 +21,8 @@ class StopWatch:
         "Whether the StopWatch has stopped."
         self.__start_time : datetime = None
         "The start date and time of the StopWatch"
+        self.__stop_time : datetime = None
+        "The stop date and time of the StopWatch"
         return
 
     def start(self) -> None:
@@ -45,23 +47,25 @@ class StopWatch:
 
         self.__stopped = True
         # TODO: Implement a Stop Functionality
+        self.__stop_time = datetime.now()
         return
 
     def __str__(self) -> str:
         if self.__started and self.__stopped:
-            return "Started and Stopped StopWatch"
+            return f"{self.__stop_time - self.__start_time}"
         if self.__started:
             return f"{datetime.now() - self.__start_time}"
-        return ""
+        return "StopWatch has not yet been started."
 
 
 def main() -> None:
     # TODO: Add Unit Testing
     stopwatch = StopWatch()
+    print(stopwatch)
     stopwatch.start()
-    input("Enter stop when desired:")
     print(stopwatch)
     stopwatch.stop()
+    print(stopwatch)
     return
 
 
