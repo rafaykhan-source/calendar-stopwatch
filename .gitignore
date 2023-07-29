@@ -1,5 +1,3 @@
 .vscode
 **/__pycache__/**
-gcal_api_exploration
-credentials.json
-token.json
+config/*
