@@ -2,7 +2,7 @@
 
 This module defines the Session ADT, which stores information and supports 
 operations relevant to logic associated utilizing a StopWatch and information
-of why a User needs the use the stopwatch.
+of why a client needs the use the stopwatch.
 
 Typical usage example:
 
