@@ -14,10 +14,14 @@ Typical usage example:
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
-        self.title = title
-        self.description = description
-        self.__began = False
-        self.__ended = False
+        self.title : str = title
+        "A general title for the timed session."
+        self.description : str = description
+        "A description for the session."
+        self.__began : bool = False
+        "Whether the session has begun."
+        self.__ended : bool = False
+        "Whether the session has ended."
         return
 
     def begin(self) -> None:
