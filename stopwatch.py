@@ -10,11 +10,14 @@ Typical usage example:
   stopwatch.stop()
 """
 
+from datetime import datetime
+
 
 class StopWatch:
     def __init__(self) -> None:
         self.__started = False
         self.__stopped = False
+        self.__start_time = None
         return
 
     def start(self) -> None:
@@ -24,6 +27,7 @@ class StopWatch:
 
         self.__started = True
         # TODO: Implement a Start Functionality
+        self.__start_time = datetime.now()
         return
 
     def stop(self) -> None:
@@ -39,6 +43,10 @@ class StopWatch:
         return
 
     def __str__(self) -> str:
+        if self.__started and self.__stopped:
+            return "Started and Stopped StopWatch"
+        if self.__started:
+            return f"{datetime.now() - self.__start_time}"
         return ""
 
 
