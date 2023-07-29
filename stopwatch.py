@@ -52,6 +52,11 @@ class StopWatch:
 
 def main() -> None:
     # TODO: Add Unit Testing
+    stopwatch = StopWatch()
+    stopwatch.start()
+    input("Enter stop when desired:")
+    print(stopwatch)
+    stopwatch.stop()
     return
 
 
