@@ -13,17 +13,18 @@ Typical usage example:
 
 from stopwatch import StopWatch
 
+
 class Session:
     def __init__(self, title: str, description: str) -> None:
-        self.title : str = title
+        self.title: str = title
         "A general title for the timed session."
-        self.description : str = description
+        self.description: str = description
         "A description for the session."
-        self.stopwatch : StopWatch = None
+        self.stopwatch: StopWatch = None
         "A stopwatch for the session."
-        self.__began : bool = False
+        self.__began: bool = False
         "Whether the session has begun."
-        self.__ended : bool = False
+        self.__ended: bool = False
         "Whether the session has ended."
         return
 
