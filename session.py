@@ -11,6 +11,7 @@ Typical usage example:
   session.end()
 """
 
+import time
 from datetime import datetime
 from stopwatch import StopWatch
 
@@ -21,7 +22,7 @@ class Session:
         "A general title for the timed session."
         self.description: str = description
         "A description for the session."
-        self.stopwatch: StopWatch = StopWatch()
+        self.__stopwatch: StopWatch = StopWatch()
         "A stopwatch for the session."
         self.__began: bool = False
         "Whether the session has begun."
@@ -35,7 +36,7 @@ class Session:
             print("Error: Cannot begin Session that has already begun.")
             return
         self.__began = True
-        self.stopwatch.start()
+        self.__stopwatch.start()
         return
 
     def end(self) -> None:
@@ -47,7 +48,7 @@ class Session:
             print("Error: Cannot end Session that has already ended.")
             return
         self.__ended = True
-        self.stopwatch.stop()
+        self.__stopwatch.stop()
         return
 
     def get_session_time_range(self) -> tuple[datetime]:
@@ -56,13 +57,13 @@ class Session:
         Returns:
             tuple[datetime]: start and end datetimes
         """
-        return (self.stopwatch.start_time, self.stopwatch.stop_time)
+        return (self.__stopwatch.start_time, self.__stopwatch.stop_time)
 
     def __str__(self) -> str:
         return f"""
 Title: {self.title}
 Description: {self.description}
-Duration: {self.stopwatch}
+Duration: {self.__stopwatch} 
 """
 
 
@@ -73,6 +74,7 @@ def main() -> None:
     print(session)
     session.begin()
     print(session)
+    time.sleep(5)
     session.end()
     print(session)
     print(session.get_session_time_range())
