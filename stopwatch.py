@@ -24,6 +24,7 @@ class StopWatch:
         return
 
     def start(self) -> None:
+        """Starts the StopWatch."""
         if self.__started:
             print("Error: StopWatch has already been started.")
             return
@@ -34,6 +35,7 @@ class StopWatch:
         return
 
     def stop(self) -> None:
+        """Stops the StopWatch."""
         if not self.__started:
             print("Error: Cannot stop StopWatch that has not been started.")
             return
