@@ -11,6 +11,7 @@ Typical usage example:
   session.end()
 """
 
+from datetime import datetime
 from stopwatch import StopWatch
 
 
@@ -49,6 +50,14 @@ class Session:
         self.stopwatch.stop()
         return
 
+    def get_session_time_range(self) -> tuple[datetime]:
+        """Returns the start and end datetimes.
+
+        Returns:
+            tuple[datetime]: start and end datetimes
+        """
+        return (self.stopwatch.start_time, self.stopwatch.stop_time)
+
     def __str__(self) -> str:
         return f"""
 Title: {self.title}
@@ -66,6 +75,7 @@ def main() -> None:
     print(session)
     session.end()
     print(session)
+    print(session.get_session_time_range())
     return
 
 
