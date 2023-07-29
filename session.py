@@ -11,6 +11,7 @@ Typical usage example:
   session.end()
 """
 
+from stopwatch import StopWatch
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
@@ -18,6 +19,8 @@ class Session:
         "A general title for the timed session."
         self.description : str = description
         "A description for the session."
+        self.stopwatch : StopWatch = None
+        "A stopwatch for the session."
         self.__began : bool = False
         "Whether the session has begun."
         self.__ended : bool = False
@@ -46,7 +49,11 @@ class Session:
         return
 
     def __str__(self) -> str:
-        return ""
+        return f"""
+Title: {self.title}
+Description: {self.description}
+Duration: {self.stopwatch}
+"""
 
 
 def main() -> None:
