@@ -16,17 +16,16 @@ from event import Event
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
+
 def get_credentials() -> Credentials:
     creds = None
-    
+
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
     if os.path.exists("config/token.json"):
-        creds = Credentials.from_authorized_user_file(
-            "config/token.json", SCOPES
-        )
-        
+        creds = Credentials.from_authorized_user_file("config/token.json", SCOPES)
+
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
@@ -39,10 +38,11 @@ def get_credentials() -> Credentials:
         # Save the credentials for the next run
         with open("config/token.json", "w") as token:
             token.write(creds.to_json())
-    
+
     return creds
-    
-def get_service() -> Any:
+
+
+def get_service():
     creds = get_credentials()
     try:
         service = build("calendar", "v3", credentials=creds)
@@ -50,15 +50,19 @@ def get_service() -> Any:
         print(f"Error: {error}")
         return None
     return service
-    
+
 
 def add_event(cal_event: Event) -> None:
     service = get_service()
-    event = service.events().insert(calendarId="primary", body=cal_event.get_event_dictionary()).execute()
+    event = (
+        service.events()
+        .insert(calendarId="primary", body=cal_event.get_event_dictionary())
+        .execute()
+    )
     print(f"Event created: {event.get('htmlLink')}")
     return
-    
-    
+
+
 def main() -> None:
     event = Event(
         summary="Marshmallow Development",
@@ -68,6 +72,7 @@ def main() -> None:
     )
     add_event(event)
     return
+
 
 if __name__ == "__main__":
     main()
