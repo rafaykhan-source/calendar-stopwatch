@@ -25,6 +25,7 @@ class Session:
         return
 
     def begin(self) -> None:
+        """Begins the Session."""
         if self.__began:
             print("Error: Cannot begin Session that has already begun.")
             return
@@ -33,6 +34,7 @@ class Session:
         return
 
     def end(self) -> None:
+        """Ends the session."""
         if not self.__began:
             print("Error: Cannot end Session that has not yet begun.")
             return
