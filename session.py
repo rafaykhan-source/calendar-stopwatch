@@ -58,7 +58,9 @@ Duration: {self.stopwatch}
 
 
 def main() -> None:
-    session = Session(title="Marshmallow Development", description="Doing Intensive Refactoring")
+    session = Session(
+        title="Marshmallow Development", description="Doing Intensive Refactoring"
+    )
     print(session)
     return
 
