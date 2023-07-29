@@ -12,14 +12,20 @@ Typical usage example:
 """
 
 class Session:
-    def __init__(self) -> None:
+    def __init__(self, title: str, description: str) -> None:
+        self.title = title
+        self.description = description
+        self.__began = False
+        self.__ended = False
         return
 
     def begin(self) -> None:
+        self.__began = True
         # TODO: Implement a Begin Functionality
         return
 
     def end(self) -> None:
+        self.__ended = True
         # TODO: Implement a End Functionality
         return
 
