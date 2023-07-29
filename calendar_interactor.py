@@ -2,9 +2,6 @@ from __future__ import print_function
 
 import datetime
 import os.path
-import sys
-
-sys.path.append("..")
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -62,15 +59,42 @@ def add_event(cal_event: Event) -> None:
     print(f"Event created: {event.get('htmlLink')}")
     return
 
+def read_event() -> None:
+    service = get_service()
+    # Call the Calendar API
+    now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
+    print("Getting the upcoming 10 events")
+    events_result = (
+        service.events()
+        .list(
+            calendarId="primary",
+            timeMin=now,
+            maxResults=10,
+            singleEvents=True,
+            orderBy="startTime",
+        )
+        .execute()
+    )
+    events = events_result.get("items", [])
+
+    if not events:
+        print("No upcoming events found.")
+        return
+
+    # Prints the start and name of the next 10 events
+    for event in events:
+        start = event["start"].get("dateTime", event["start"].get("date"))
+        print(start, event["summary"])
 
 def main() -> None:
-    event = Event(
-        summary="Marshmallow Development",
-        description="Intensive Refactoring",
-        start_date=datetime.datetime(year=2023, month=7, day=29, hour=16),
-        end_date=datetime.datetime(year=2023, month=7, day=29, hour=18),
-    )
-    add_event(event)
+    # event = Event(
+    #     summary="Marshmallow Development",
+    #     description="Intensive Refactoring",
+    #     start_date=datetime.datetime(year=2023, month=7, day=29, hour=10),
+    #     end_date=datetime.datetime(year=2023, month=7, day=29, hour=12),
+    # )
+    # add_event(event)
+    read_event()
     return
 
 
