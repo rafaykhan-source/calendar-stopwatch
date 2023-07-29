@@ -15,13 +15,13 @@ from datetime import datetime
 
 class StopWatch:
     def __init__(self) -> None:
-        self.__started : bool = False
+        self.__started: bool = False
         "Whether the StopWatch has started."
-        self.__stopped : bool = False
+        self.__stopped: bool = False
         "Whether the StopWatch has stopped."
-        self.__start_time : datetime = None
+        self.__start_time: datetime = None
         "The start date and time of the StopWatch"
-        self.__stop_time : datetime = None
+        self.__stop_time: datetime = None
         "The stop date and time of the StopWatch"
         return
 
