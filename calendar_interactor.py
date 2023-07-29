@@ -59,17 +59,22 @@ def add_event(cal_event: Event) -> None:
     print(f"Event created: {event.get('htmlLink')}")
     return
 
-def read_event() -> None:
+def read_event(amount: int) -> None:
+    """Prints upcoming events.
+
+    Args:
+        amount (int): number of upcoming events
+    """
     service = get_service()
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + "Z"  # 'Z' indicates UTC time
-    print("Getting the upcoming 10 events")
+    print(f"Getting the upcoming {amount} events.")
     events_result = (
         service.events()
         .list(
             calendarId="primary",
             timeMin=now,
-            maxResults=10,
+            maxResults=amount,
             singleEvents=True,
             orderBy="startTime",
         )
@@ -81,7 +86,7 @@ def read_event() -> None:
         print("No upcoming events found.")
         return
 
-    # Prints the start and name of the next 10 events
+    # Prints the start and name of the next amount events
     for event in events:
         start = event["start"].get("dateTime", event["start"].get("date"))
         print(start, event["summary"])
@@ -94,7 +99,7 @@ def main() -> None:
     #     end_date=datetime.datetime(year=2023, month=7, day=29, hour=12),
     # )
     # add_event(event)
-    read_event()
+    read_event(5)
     return
 
 
