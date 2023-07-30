@@ -58,7 +58,12 @@ class Event:
         return self.event
 
     def __str__(self):
-        return str(self.event)
+        return f"""
+Summary: {self.event["summary"]}
+Description: {self.event["description"]}
+Start Date: {self.event["start"]["dateTime"]}
+End Date: {self.event["end"]["dateTime"]}
+"""
 
 
 def main() -> None:
@@ -73,16 +78,15 @@ def main() -> None:
 
     event = Event()
     event.create_event_from_session(session)
+    print(event)
+    event_info = event.get_event_dictionary()
+    print(event_info)
     # event = Event(
     #     summary="Marshmallow Development",
     #     description="Intensive Refactoring",
     #     start_date=datetime(year=2023, month=7, day=29, hour=16),
     #     end_date=datetime(year=2023, month=7, day=29, hour=18),
     # )
-    event_info = event.get_event_dictionary()
-    for key, value in event_info.items():
-        print(key, value)
-    print(event)
     return
 
 

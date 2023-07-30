@@ -15,10 +15,6 @@ from datetime import datetime
 
 class StopWatch:
     def __init__(self) -> None:
-        self.__started: bool = False
-        "Whether the StopWatch has started."
-        self.__stopped: bool = False
-        "Whether the StopWatch has stopped."
         self.start_time: datetime = None
         "The start date and time of the StopWatch"
         self.stop_time: datetime = None
@@ -27,31 +23,29 @@ class StopWatch:
 
     def start(self) -> None:
         """Starts the StopWatch."""
-        if self.__started:
+        if self.start_time:
             print("Error: StopWatch has already been started.")
             return
 
-        self.__started = True
         self.start_time = datetime.now()
         return
 
     def stop(self) -> None:
         """Stops the StopWatch."""
-        if not self.__started:
+        if not self.start_time:
             print("Error: Cannot stop StopWatch that has not been started.")
             return
-        if self.__stopped:
+        if self.stop_time:
             print("Error: StopWatch has already been stopped.")
             return
 
-        self.__stopped = True
         self.stop_time = datetime.now()
         return
 
     def __str__(self) -> str:
-        if self.__started and self.__stopped:
+        if self.start_time and self.stop_time:
             return f"{self.stop_time - self.start_time}"
-        if self.__started:
+        if self.start_time:
             return f"{datetime.now() - self.start_time}"
         return "StopWatch has not yet been started."
 
