@@ -29,7 +29,8 @@ def get_credentials() -> Credentials:
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "config/credentials.json", SCOPES
+                "config/credentials.json",
+                SCOPES,
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
@@ -58,6 +59,7 @@ def add_event(cal_event: Event) -> None:
     )
     print(f"Event created: {event.get('htmlLink')}")
     return
+
 
 def read_event(amount: int) -> None:
     """Prints upcoming events.
@@ -90,6 +92,7 @@ def read_event(amount: int) -> None:
     for event in events:
         start = event["start"].get("dateTime", event["start"].get("date"))
         print(start, event["summary"])
+
 
 def main() -> None:
     # event = Event(
