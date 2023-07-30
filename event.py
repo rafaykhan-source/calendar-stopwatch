@@ -36,9 +36,10 @@ class Event:
 
     def create_event_from_session(self, session: Session) -> None:
         start_date, end_date = session.get_session_time_range()
+        duration = f"Duration: {session.get_duration()}"
         self.event = {
             "summary": f"{session.title}",
-            "description": f"{session.description}",
+            "description": f"{session.description}\n{duration}",
             "start": {
                 "dateTime": f"{start_date.isoformat()}",
                 "timeZone": "America/New_York",
