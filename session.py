@@ -51,6 +51,14 @@ class Session:
         self.__stopwatch.stop()
         return
 
+    def get_duration(self) -> str:
+        """Returns the duration of the session.
+
+        Returns:
+            str: duration of the session
+        """
+        return str(self.__stopwatch)
+
     def get_session_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
