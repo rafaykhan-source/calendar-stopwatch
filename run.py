@@ -28,7 +28,6 @@ def get_args() -> argparse.Namespace:
 
 def main() -> None:
     args = get_args()
-    print(args)
     session = Session(
         title=args.t,
         description=args.d,
