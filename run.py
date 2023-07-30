@@ -11,13 +11,13 @@ def get_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "-t",
-        "--title",
         help="name of the session (and google calendar event)",
+        metavar="title",
         required=True,
     )
     parser.add_argument(
         "-d",
-        "--description",
+        metavar="description",
         help="description of the session (and google calendar event)",
         required=True,
     )
