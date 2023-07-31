@@ -1,5 +1,16 @@
 #!/usr/bin/env python
 
+"""A module for running the google-stopwatch program.
+
+This module is responsible for running the google-stopwatch
+program. Start and stop a stopwatch and have it retroactively
+logged on google calendar upon completion.
+
+Typical usage example:
+
+$ python run.py -t "Stopwatch Session Title" -d "Stopwatch Session Description"
+"""
+
 import argparse
 import calendar_interactor as cal
 from event import Event
