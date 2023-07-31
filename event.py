@@ -5,6 +5,8 @@ This module defines the Event ADT, which wraps the Google Calendar Event.
 Typical usage example:
 
   event = Event()
+  event.create_event_from_session(session)
+  event_info = event.get_event_dictionary()
 """
 
 import time
