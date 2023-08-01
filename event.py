@@ -1,6 +1,7 @@
 """A class representing a Google Calendar Event.
 
-This module defines the Event ADT, which wraps the Google Calendar Event.
+This module defines the Event ADT, which wraps the information relevant
+to a google calendar event.
 
 Typical usage example:
 
@@ -11,7 +12,7 @@ Typical usage example:
 
 import time
 from datetime import datetime
-from session import Session
+from ADTs.session import Session
 
 
 class Event:
