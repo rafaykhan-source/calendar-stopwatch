@@ -13,8 +13,8 @@ $ python run.py -t "Stopwatch Session Title" -d "Stopwatch Session Description"
 
 import argparse
 import calendar_interactor as cal
-from event import Event
-from session import Session
+from ADTs.event import Event
+from ADTs.session import Session
 
 
 def get_args() -> argparse.Namespace:
