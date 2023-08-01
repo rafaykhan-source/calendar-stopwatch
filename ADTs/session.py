@@ -13,7 +13,7 @@ Typical usage example:
 
 import time
 from datetime import datetime
-from stopwatch import StopWatch
+from ADTs.stopwatch import StopWatch
 
 
 class Session:
