@@ -60,7 +60,7 @@ class Session:
             str: duration of the session
         """
         return str(self.__stopwatch)
-
+    # TODO: Add session.is_complete() method for internal checks and external use
     def get_session_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
