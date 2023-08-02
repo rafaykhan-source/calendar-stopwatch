@@ -12,7 +12,10 @@ Typical usage example:
 
 import time
 from datetime import datetime
+import logging
 from ADTs.session import Session
+
+logger = logging.getLogger(__name__)
 
 
 class Event:
@@ -23,6 +26,13 @@ class Event:
         start_date: datetime = None,
         end_date: datetime = None,
     ) -> None:
+        if not isinstance(summary, str):
+            logging.error("Error: summary is not of type str.")
+            return
+        if not isinstance(description, str):
+            logging.error("Error: description is not of type str.")
+            return
+
         self.event = {
             "summary": f"{summary}",
             "description": f"{description}",
