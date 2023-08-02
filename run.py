@@ -12,9 +12,12 @@ $ python run.py -t "Stopwatch Session Title" -d "Stopwatch Session Description"
 """
 
 import argparse
+import logging
 import calendar_interactor as cal
 from ADTs.event import Event
 from ADTs.session import Session
+
+logger = logging.getLogger(__name__)
 
 
 def get_args() -> argparse.Namespace:
@@ -39,13 +42,16 @@ def get_args() -> argparse.Namespace:
 
 def main() -> None:
     args = get_args()
+    logger.info("Retrieved command-line arguments.")
+
     session = Session(
         title=args.t,
         description=args.d,
     )
 
     session.begin()
-    input("Press Enter to Stop: ")
+    input("Press Enter to Stop Session: ")
+    logger.info("User requested session stop.")
     session.end()
 
     event = Event()
