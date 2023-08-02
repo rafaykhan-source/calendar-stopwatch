@@ -19,7 +19,7 @@ import calendar_interactor as cal
 from ADTs.event import Event
 from ADTs.session import Session
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("run")
 
 
 def __configure_logging() -> None:
@@ -51,6 +51,7 @@ def __get_args() -> argparse.Namespace:
 
 def main() -> None:
     __configure_logging()
+    logger.info("Configured logging.")
 
     args = __get_args()
     logger.info("Retrieved command-line arguments.")
