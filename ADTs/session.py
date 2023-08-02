@@ -14,7 +14,7 @@ Typical usage example:
 import time
 from datetime import datetime
 import logging
-from stopwatch import StopWatch
+from ADTs.stopwatch import StopWatch
 
 logger = logging.getLogger(__name__)
 

@@ -1,3 +1,3 @@
-from event import Event
-from session import Session
-from stopwatch import StopWatch
+from ADTs.event import Event
+from ADTs.session import Session
+from ADTs.stopwatch import StopWatch
