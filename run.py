@@ -21,15 +21,15 @@ from ADTs.session import Session
 
 logger = logging.getLogger(__name__)
 
-def __configure_logging() -> None:
 
+def __configure_logging() -> None:
     config = stg.get_logging_config()
     logging.config.dictConfig(config)
 
     return
 
-# TODO: make get_args private
-def get_args() -> argparse.Namespace:
+
+def __get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="google-stopwatch",
         description="A stopwatch that logs your session on google calendar.",
@@ -51,8 +51,8 @@ def get_args() -> argparse.Namespace:
 
 def main() -> None:
     __configure_logging()
-    
-    args = get_args()
+
+    args = __get_args()
     logger.info("Retrieved command-line arguments.")
 
     session = Session(
