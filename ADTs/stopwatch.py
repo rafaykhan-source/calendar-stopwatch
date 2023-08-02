@@ -13,7 +13,7 @@ Typical usage example:
 from datetime import datetime
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("ADTs")
 
 
 class StopWatch:

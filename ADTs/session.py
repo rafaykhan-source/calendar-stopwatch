@@ -16,7 +16,7 @@ from datetime import datetime
 import logging
 from ADTs.stopwatch import StopWatch
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("ADTs")
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
