@@ -13,8 +13,10 @@ Typical usage example:
 
 import time
 from datetime import datetime
-from ADTs.stopwatch import StopWatch
+import logging
+from stopwatch import StopWatch
 
+logger = logging.getLogger(__name__)
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
@@ -33,7 +35,7 @@ class Session:
     def begin(self) -> None:
         """Begins the Session."""
         if self.__began:
-            print("Error: Cannot begin Session that has already begun.")
+            logger.error("Error: Cannot begin session that has already begun.")
             return
         self.__began = True
         self.__stopwatch.start()
@@ -42,10 +44,10 @@ class Session:
     def end(self) -> None:
         """Ends the session."""
         if not self.__began:
-            print("Error: Cannot end Session that has not yet begun.")
+            logger.error("Error: Cannot end session that has not yet begun.")
             return
         if self.__ended:
-            print("Error: Cannot end Session that has already ended.")
+            logger.error("Error: Cannot end session that has already ended.")
             return
         self.__ended = True
         self.__stopwatch.stop()
@@ -79,13 +81,16 @@ def main() -> None:
     session = Session(
         title="Marshmallow Development", description="Doing Intensive Refactoring"
     )
+    session.end()
     print(session)
     session.begin()
     print(session)
     time.sleep(5)
     session.end()
     print(session)
-    print(session.get_session_time_range())
+    session.begin()
+    session.end()
+    print(str(session.get_session_time_range()) + ": " + session.get_duration())
     return
 
 
