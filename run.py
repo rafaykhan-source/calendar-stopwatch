@@ -13,12 +13,20 @@ $ python run.py -t "Stopwatch Session Title" -d "Stopwatch Session Description"
 
 import argparse
 import logging
+import logging.config
+from config import settings as stg
 import calendar_interactor as cal
 from ADTs.event import Event
 from ADTs.session import Session
 
 logger = logging.getLogger(__name__)
 
+def __configure_logging() -> None:
+
+    config = stg.get_logging_config()
+    logging.config.dictConfig(config)
+
+    return
 
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -41,6 +49,8 @@ def get_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    __configure_logging()
+    
     args = get_args()
     logger.info("Retrieved command-line arguments.")
 
