@@ -11,6 +11,9 @@ Typical usage example:
 """
 
 from datetime import datetime
+import logging
+
+logger = logging.getLogger("ADTs")
 
 
 class StopWatch:
@@ -24,22 +27,24 @@ class StopWatch:
     def start(self) -> None:
         """Starts the StopWatch."""
         if self.start_time:
-            print("Error: StopWatch has already been started.")
+            logger.error("Error: StopWatch has already been started.")
             return
 
         self.start_time = datetime.now()
+        logger.info("Stopwatch has started.")
         return
 
     def stop(self) -> None:
         """Stops the StopWatch."""
         if not self.start_time:
-            print("Error: Cannot stop StopWatch that has not been started.")
+            logger.error("Error: Cannot stop StopWatch that has not been started.")
             return
         if self.stop_time:
-            print("Error: StopWatch has already been stopped.")
+            logger.error("Error: StopWatch has already been stopped.")
             return
 
         self.stop_time = datetime.now()
+        logger.info("Stopwatch has stopped.")
         return
 
     def __str__(self) -> str:
@@ -52,11 +57,14 @@ class StopWatch:
 
 def main() -> None:
     stopwatch = StopWatch()
+    stopwatch.stop()
     print(stopwatch)
     stopwatch.start()
     print(stopwatch)
     stopwatch.stop()
     print(stopwatch)
+    stopwatch.start()
+    stopwatch.stop()
     return
 
 

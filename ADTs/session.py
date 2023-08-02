@@ -13,8 +13,10 @@ Typical usage example:
 
 import time
 from datetime import datetime
+import logging
 from ADTs.stopwatch import StopWatch
 
+logger = logging.getLogger("ADTs")
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
@@ -33,22 +35,24 @@ class Session:
     def begin(self) -> None:
         """Begins the Session."""
         if self.__began:
-            print("Error: Cannot begin Session that has already begun.")
+            logger.error("Error: Cannot begin session that has already begun.")
             return
         self.__began = True
         self.__stopwatch.start()
+        logger.info("Session has begun.")
         return
 
     def end(self) -> None:
         """Ends the session."""
         if not self.__began:
-            print("Error: Cannot end Session that has not yet begun.")
+            logger.error("Error: Cannot end session that has not yet begun.")
             return
         if self.__ended:
-            print("Error: Cannot end Session that has already ended.")
+            logger.error("Error: Cannot end session that has already ended.")
             return
         self.__ended = True
         self.__stopwatch.stop()
+        logger.info("Session has ended.")
         return
 
     def get_duration(self) -> str:
@@ -58,7 +62,7 @@ class Session:
             str: duration of the session
         """
         return str(self.__stopwatch)
-
+    # TODO: Add session.is_complete() method for internal checks and external use
     def get_session_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
@@ -79,13 +83,16 @@ def main() -> None:
     session = Session(
         title="Marshmallow Development", description="Doing Intensive Refactoring"
     )
+    session.end()
     print(session)
     session.begin()
     print(session)
     time.sleep(5)
     session.end()
     print(session)
-    print(session.get_session_time_range())
+    session.begin()
+    session.end()
+    print(str(session.get_session_time_range()) + ": " + session.get_duration())
     return
 
 
