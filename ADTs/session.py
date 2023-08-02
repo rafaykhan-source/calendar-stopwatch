@@ -39,6 +39,7 @@ class Session:
             return
         self.__began = True
         self.__stopwatch.start()
+        logging.info("Session has begun.")
         return
 
     def end(self) -> None:
@@ -51,6 +52,7 @@ class Session:
             return
         self.__ended = True
         self.__stopwatch.stop()
+        logging.info("Session has ended.")
         return
 
     def get_duration(self) -> str:

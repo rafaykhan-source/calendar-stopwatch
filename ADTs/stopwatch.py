@@ -31,6 +31,7 @@ class StopWatch:
             return
 
         self.start_time = datetime.now()
+        logger.info("Stopwatch has started.")
         return
 
     def stop(self) -> None:
@@ -43,6 +44,7 @@ class StopWatch:
             return
 
         self.stop_time = datetime.now()
+        logger.info("Stopwatch has stopped.")
         return
 
     def __str__(self) -> str:
