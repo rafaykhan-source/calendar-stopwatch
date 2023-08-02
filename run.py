@@ -28,6 +28,7 @@ def __configure_logging() -> None:
 
     return
 
+# TODO: make get_args private
 def get_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="google-stopwatch",
