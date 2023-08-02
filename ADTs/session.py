@@ -71,7 +71,7 @@ class Session:
         return f"""
 Title: {self.title}
 Description: {self.description}
-Duration: {self.__stopwatch} 
+Duration: {self.__stopwatch}
 """
 
 
