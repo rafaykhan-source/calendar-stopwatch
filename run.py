@@ -24,6 +24,8 @@ logger = logging.getLogger("run")
 
 
 def __configure_logging() -> None:
+    """Configures logging for the program."""
+
     config = stg.get_logging_config()
     logging.config.dictConfig(config)
 
@@ -31,6 +33,11 @@ def __configure_logging() -> None:
 
 
 def __get_args() -> argparse.Namespace:
+    """Returns arguments User supplied to program.
+
+    Returns:
+        argparse.Namespace: User args with named attributes.
+    """
     parser = argparse.ArgumentParser(
         prog="google-stopwatch",
         description="A stopwatch that logs your session on google calendar.",
