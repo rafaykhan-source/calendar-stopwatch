@@ -1,3 +1,9 @@
+"""This module represents the settings for the google-stopwatch project.
+
+This module contains a function responsible for retrieving the logging
+configuration required for the project.
+"""
+
 import yaml
 
 
