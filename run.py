@@ -35,11 +35,8 @@ def __get_args() -> argparse.Namespace:
         description="A stopwatch that logs your session on google calendar.",
     )
     parser.add_argument(
-        "-t",
-        metavar="title",
+        "title",
         help="name of the session (and google calendar event)",
-        required=True,
-        dest="title",
     )
     parser.add_argument(
         "-d",
