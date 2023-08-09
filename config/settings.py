@@ -15,7 +15,6 @@ def get_logging_config() -> dict:
 
 def main() -> None:
     print(get_logging_config())
-
     return
 
 
