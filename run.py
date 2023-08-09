@@ -39,12 +39,15 @@ def __get_args() -> argparse.Namespace:
         metavar="title",
         help="name of the session (and google calendar event)",
         required=True,
+        dest="title",
     )
     parser.add_argument(
         "-d",
         metavar="description",
         help="description of the session (and google calendar event)",
-        required=True,
+        default="",
+        required=False,
+        dest="description",
     )
     return parser.parse_args()
 
@@ -57,8 +60,8 @@ def main() -> None:
     logger.info("Retrieved command-line arguments.")
 
     session = Session(
-        title=args.t,
-        description=args.d,
+        title=args.title,
+        description=args.description,
     )
 
     session.begin()
