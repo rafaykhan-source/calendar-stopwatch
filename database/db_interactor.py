@@ -20,7 +20,7 @@ def create_sessions_table() -> None:
     con = sqlite3.connect("database/session-history.sqlite")
     cur = con.cursor()
     cur.execute(
-        "CREATE TABLE IF NOT EXISTS sessions(title TEXT, description TEXT, start_time TIMESTAMP, end_time TIMESTAMP, posted NUMERIC)"
+        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP, posted NUMERIC)"
     )
     con.close()
     return
@@ -32,7 +32,7 @@ def add_session(session: Session, posted: bool) -> None:
     con = sqlite3.connect("database/session-history.sqlite")
     with con:
         con.execute(
-            "INSERT INTO sessions VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO sessions (title, description, start, end, posted) VALUES (?, ?, ?, ?, ?)",
             params,
         )
     con.close()
@@ -47,7 +47,7 @@ def extract_params_from_session(
     Client should also provide whether event has been posted or not.
 
     Args:
-        session (Session): Completed session
+        session (Session): Completed session.
         posted (bool): Whether event has been posted or not.
 
     Returns:
