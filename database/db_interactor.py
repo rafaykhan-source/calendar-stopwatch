@@ -20,19 +20,19 @@ def create_sessions_table() -> None:
     con = sqlite3.connect("database/session-history.sqlite")
     cur = con.cursor()
     cur.execute(
-        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP, posted NUMERIC)"
+        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)"
     )
     con.close()
     return
 
 
-def add_session(session: Session, posted: bool) -> None:
-    params = extract_params_from_session(session, posted)
+def add_session(session: Session) -> None:
+    params = extract_params_from_session(session)
 
     con = sqlite3.connect("database/session-history.sqlite")
     with con:
         con.execute(
-            "INSERT INTO sessions (title, description, start, end, posted) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO sessions (title, description, start, end) VALUES (?, ?, ?, ?)",
             params,
         )
     con.close()
@@ -40,21 +40,20 @@ def add_session(session: Session, posted: bool) -> None:
 
 
 def extract_params_from_session(
-    session: Session, posted: bool
-) -> tuple[str, str, datetime, datetime, bool]:
+    session: Session,
+) -> tuple[str, str, datetime, datetime]:
     """Extracts parameters for sqlite query from session.
 
     Client should also provide whether event has been posted or not.
 
     Args:
         session (Session): Completed session.
-        posted (bool): Whether event has been posted or not.
 
     Returns:
-        tuple[str, str, datetime, datetime, bool]: params
+        tuple[str, str, datetime, datetime]: params
     """
     start, end = session.get_session_time_range()
-    params = (session.title, session.description, start, end, posted)
+    params = (session.title, session.description, start, end)
     return params
 
 

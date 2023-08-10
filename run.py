@@ -79,7 +79,7 @@ def main() -> None:
     event.create_event_from_session(session)
 
     cal.add_event(event)
-    db.add_session(session, True)
+    db.add_session(session)
 
     return
 
