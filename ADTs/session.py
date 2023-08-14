@@ -22,6 +22,12 @@ logger = logging.getLogger("ADTs")
 
 class Session:
     def __init__(self, title: str, description: str) -> None:
+        """Instantiates the session.
+
+        Args:
+            title (str): Name of the session.
+            description (str): Additional details of the session.
+        """
         self.title: str = title
         "A general title for the timed session."
         self.description: str = description
@@ -84,6 +90,7 @@ Duration: {self.__stopwatch}
 
 
 def main() -> None:
+    """Unit Testing."""
     session = Session(
         title="Marshmallow Development", description="Doing Intensive Refactoring"
     )
