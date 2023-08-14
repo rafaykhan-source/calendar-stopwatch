@@ -11,9 +11,10 @@ Typical usage example:
   session.end()
 """
 
+import logging
 import time
 from datetime import datetime
-import logging
+
 from ADTs.stopwatch import StopWatch
 
 logger = logging.getLogger("ADTs")
