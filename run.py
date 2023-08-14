@@ -19,6 +19,7 @@ from config import settings as stg
 import calendar_interactor as cal
 from ADTs.event import Event
 from ADTs.session import Session
+from database import db_interactor as db
 
 logger = logging.getLogger("run")
 
@@ -78,6 +79,7 @@ def main() -> None:
     event.create_event_from_session(session)
 
     cal.add_event(event)
+    db.add_session(session)
 
     return
 
