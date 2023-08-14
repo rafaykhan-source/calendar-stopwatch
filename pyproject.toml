@@ -9,7 +9,20 @@ authors = [{ name = "Rafay Khan" }]
 maintainers = [{ name = "Rafay Khan" }]
 description = "A stopwatch program that automatically logs sessions to Google Calendar."
 readme = "README.md"
+requires-python = ">=3.10"
 dependencies = []
+
+[tool.ruff]
+line-length = 88
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "UP", # pyupgrade
+    "D",   # pydocstyle
+]
+
+[tool.ruff.pydocstyle]
+convention = "google"
 
 [tool.isort]
 profile = "black"
