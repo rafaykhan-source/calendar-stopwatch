@@ -21,6 +21,13 @@ logger = logging.getLogger("ADTs")
 
 
 class Session:
+    """This class wraps information pertaining to a stopwatch session.
+
+    Attributes:
+        title (str): Name of the session.
+        description (str): Additional details of the session.
+    """
+
     def __init__(self, title: str, description: str) -> None:
         """Instantiates the session.
 
@@ -82,6 +89,11 @@ class Session:
         return (self.__stopwatch.start_time, self.__stopwatch.stop_time)
 
     def __str__(self) -> str:
+        """Returns a string representation of the session.
+
+        Returns:
+            str: Session's information.
+        """
         return f"""
 Title: {self.title}
 Description: {self.description}
