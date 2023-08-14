@@ -2,6 +2,6 @@
 **/__pycache__/**
 build/
 logs/*.log
-google-stopwatch/*.egg-info
+*.egg-info
 google-stopwatch/config/*.json
 google-stopwatch/database/session-history.sqlite
