@@ -1,4 +1,4 @@
-"""A class representing a Google Calendar Event.
+"""A class storing Google Calendar Event information.
 
 This module defines the Event ADT, which wraps the information relevant
 to a google calendar event.
@@ -19,7 +19,10 @@ from ADTs.session import Session
 logger = logging.getLogger("ADTs")
 
 
+# TODO: Refactor this into more of a wrapper - make get_event_dict construct dict
 class Event:
+    """This class wraps information pertaining to a google calendar event."""
+
     def __init__(
         self,
         summary: str = "",
@@ -57,6 +60,11 @@ class Event:
         return
 
     def create_event_from_session(self, session: Session) -> None:
+        """Constructs the event from a session instance.
+
+        Args:
+            session (Session): Session to construct event from.
+        """
         start_date, end_date = session.get_session_time_range()
         duration = f"Duration: {session.get_duration()}"
         self.event = {
@@ -81,6 +89,11 @@ class Event:
         return self.event
 
     def __str__(self):
+        """Returns string representation of the event.
+
+        Returns:
+            str: Event's information.
+        """
         return f"""
 Summary: {self.event["summary"]}
 Description: {self.event["description"]}
