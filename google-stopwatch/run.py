@@ -26,7 +26,6 @@ logger = logging.getLogger("run")
 
 def __configure_logging() -> None:
     """Configures logging for the program."""
-
     config = stg.get_logging_config()
     logging.config.dictConfig(config)
 
@@ -59,6 +58,7 @@ def __get_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    """Runs the google-stopwatch program."""
     __configure_logging()
     logger.info("Configured logging.")
 

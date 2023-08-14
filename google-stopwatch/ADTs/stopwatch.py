@@ -17,6 +17,13 @@ logger = logging.getLogger("ADTs")
 
 
 class StopWatch:
+    """This class functions as a stopwatch.
+
+    Attributes:
+        start_time (datetime | None): stopwatch starting time if started.
+        end_time (datetime | None): stopwatch stop time if stopped.
+    """
+
     def __init__(self) -> None:
         """Instantiates the stopwatch."""
         self.start_time: datetime = None
@@ -49,6 +56,11 @@ class StopWatch:
         return
 
     def __str__(self) -> str:
+        """Returns a string representation of the stopwatch.
+
+        Returns:
+            str: Stopwatch's information/status.
+        """
         if self.start_time and self.stop_time:
             return f"{self.stop_time - self.start_time}"
         if self.start_time:

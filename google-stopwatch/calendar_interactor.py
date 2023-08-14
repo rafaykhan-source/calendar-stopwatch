@@ -10,8 +10,6 @@ Typical usage example:
   add_event()
 """
 
-from __future__ import print_function
-
 import datetime
 import os.path
 
@@ -28,6 +26,11 @@ SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 
 def get_credentials() -> Credentials:
+    """Returns credentials for accessing google calendar.
+
+    Returns:
+        Credentials: credentials for accessing google calendar.
+    """
     creds = None
 
     # The file token.json stores the user's access and refresh tokens, and is
@@ -54,6 +57,7 @@ def get_credentials() -> Credentials:
 
 
 def get_service():
+    """Returns service google calendar interactions."""
     creds = get_credentials()
     try:
         service = build("calendar", "v3", credentials=creds)
@@ -63,11 +67,16 @@ def get_service():
     return service
 
 
-def add_event(cal_event: Event) -> None:
+def add_event(event: Event) -> None:
+    """Adds event to the primary google calendar.
+
+    Args:
+        event (Event): event to add to google calendar.
+    """
     service = get_service()
     event = (
         service.events()
-        .insert(calendarId="primary", body=cal_event.get_event_dictionary())
+        .insert(calendarId="primary", body=event.get_event_dictionary())
         .execute()
     )
     print(f"Event created: {event.get('htmlLink')}")
@@ -108,6 +117,7 @@ def read_event(amount: int) -> None:
 
 
 def main() -> None:
+    """Unit Testing."""
     # event = Event(
     #     summary="Marshmallow Development",
     #     description="Intensive Refactoring",
