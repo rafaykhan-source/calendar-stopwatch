@@ -10,8 +10,6 @@ Typical usage example:
   add_event()
 """
 
-from __future__ import print_function
-
 import datetime
 import os.path
 
@@ -119,6 +117,7 @@ def read_event(amount: int) -> None:
 
 
 def main() -> None:
+    """Unit Testing."""
     # event = Event(
     #     summary="Marshmallow Development",
     #     description="Intensive Refactoring",
