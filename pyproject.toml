@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google_stopwatch"
+version = "0.0.1"
+authors = [{ name = "Rafay Khan" }]
+maintainers = [{ name = "Rafay Khan" }]
+description = "A stopwatch program that automatically logs sessions to Google Calendar."
+readme = "README.md"
+dependencies = []
+
+[tool.isort]
+profile = "black"
