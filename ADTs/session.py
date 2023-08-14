@@ -19,6 +19,7 @@ from ADTs.stopwatch import StopWatch
 
 logger = logging.getLogger("ADTs")
 
+
 class Session:
     def __init__(self, title: str, description: str) -> None:
         self.title: str = title
@@ -63,8 +64,9 @@ class Session:
             str: duration of the session
         """
         return str(self.__stopwatch)
+
     # TODO: Add session.is_complete() method for internal checks and external use
-    #TODO: change the name of this method, remove session from name
+    # TODO: change the name of this method, remove session from name
     def get_session_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
