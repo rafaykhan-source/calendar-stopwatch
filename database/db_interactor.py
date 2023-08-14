@@ -12,6 +12,7 @@ from datetime import datetime
 sys.path.append("./")
 from ADTs import Session
 
+# TODO: Add logging
 # logger = logging.getLogger("database")
 
 
