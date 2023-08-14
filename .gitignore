@@ -1,5 +1,7 @@
 .vscode
 **/__pycache__/**
-config/*.json
+build/
 logs/*.log
-database/session-history.sqlite
+*.egg-info
+google-stopwatch/config/*.json
+google-stopwatch/database/session-history.sqlite

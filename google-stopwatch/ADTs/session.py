@@ -11,15 +11,23 @@ Typical usage example:
   session.end()
 """
 
+import logging
 import time
 from datetime import datetime
-import logging
+
 from ADTs.stopwatch import StopWatch
 
 logger = logging.getLogger("ADTs")
 
+
 class Session:
     def __init__(self, title: str, description: str) -> None:
+        """Instantiates the session.
+
+        Args:
+            title (str): Name of the session.
+            description (str): Additional details of the session.
+        """
         self.title: str = title
         "A general title for the timed session."
         self.description: str = description
@@ -62,8 +70,9 @@ class Session:
             str: duration of the session
         """
         return str(self.__stopwatch)
+
     # TODO: Add session.is_complete() method for internal checks and external use
-    #TODO: change the name of this method, remove session from name
+    # TODO: change the name of this method, remove session from name
     def get_session_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
@@ -81,6 +90,7 @@ Duration: {self.__stopwatch}
 
 
 def main() -> None:
+    """Unit Testing."""
     session = Session(
         title="Marshmallow Development", description="Doing Intensive Refactoring"
     )

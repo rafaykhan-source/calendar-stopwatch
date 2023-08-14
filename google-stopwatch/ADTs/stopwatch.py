@@ -10,14 +10,15 @@ Typical usage example:
   stopwatch.stop()
 """
 
-from datetime import datetime
 import logging
+from datetime import datetime
 
 logger = logging.getLogger("ADTs")
 
 
 class StopWatch:
     def __init__(self) -> None:
+        """Instantiates the stopwatch."""
         self.start_time: datetime = None
         "The start date and time of the StopWatch"
         self.stop_time: datetime = None
@@ -56,6 +57,7 @@ class StopWatch:
 
 
 def main() -> None:
+    """Unit Testing."""
     stopwatch = StopWatch()
     stopwatch.stop()
     print(stopwatch)

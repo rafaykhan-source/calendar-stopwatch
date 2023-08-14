@@ -15,10 +15,10 @@ $ python run.py "Session Title" -d "Stopwatch Session Description"
 import argparse
 import logging
 import logging.config
-from config import settings as stg
+
 import calendar_interactor as cal
-from ADTs.event import Event
-from ADTs.session import Session
+from ADTs import Event, Session
+from config import settings as stg
 from database import db_interactor as db
 
 logger = logging.getLogger("run")
