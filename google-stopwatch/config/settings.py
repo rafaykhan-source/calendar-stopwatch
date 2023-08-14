@@ -13,7 +13,7 @@ def get_logging_config() -> dict:
     Returns:
         dict: Logging config dictionary.
     """
-    with open("config/logging_config.yml", encoding="utf-8", mode="r") as file:
+    with open("config/logging_config.yml", encoding="utf-8") as file:
         config = yaml.safe_load(file)
 
     return config
