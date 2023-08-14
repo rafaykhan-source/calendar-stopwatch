@@ -1,5 +1,7 @@
 .vscode
 **/__pycache__/**
-src/config/*.json
+build/
 logs/*.log
+src/*.egg-info
+src/config/*.json
 src/database/session-history.sqlite
