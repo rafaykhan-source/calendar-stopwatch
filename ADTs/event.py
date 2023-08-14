@@ -10,9 +10,10 @@ Typical usage example:
   event_info = event.get_event_dictionary()
 """
 
+import logging
 import time
 from datetime import datetime
-import logging
+
 from ADTs.session import Session
 
 logger = logging.getLogger("ADTs")
