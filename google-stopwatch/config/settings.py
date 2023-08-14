@@ -20,6 +20,7 @@ def get_logging_config() -> dict:
 
 
 def main() -> None:
+    """Unit Testing."""
     print(get_logging_config())
     return
 
