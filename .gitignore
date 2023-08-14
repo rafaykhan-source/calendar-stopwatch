@@ -2,4 +2,4 @@
 **/__pycache__/**
 src/config/*.json
 logs/*.log
-database/session-history.sqlite
+src/database/session-history.sqlite
