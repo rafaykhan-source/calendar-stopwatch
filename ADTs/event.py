@@ -27,6 +27,14 @@ class Event:
         start_date: datetime = None,
         end_date: datetime = None,
     ) -> None:
+        """Instantiates the event.
+
+        Args:
+            summary (str, optional): Summary or event title. Defaults to "".
+            description (str, optional): Details of the event.. Defaults to "".
+            start_date (datetime, optional): Event's start datetime. Defaults to None.
+            end_date (datetime, optional): Event's end datetime. Defaults to None.
+        """
         if not isinstance(summary, str):
             logging.error("Error: summary is not of type str.")
             return
@@ -82,6 +90,7 @@ End Date: {self.event["end"]["dateTime"]}
 
 
 def main() -> None:
+    """Unit Testing."""
     session = Session(
         title="Marshmallow Development",
         description="Intensive Refactoring",
