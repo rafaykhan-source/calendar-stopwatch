@@ -10,8 +10,8 @@ Typical usage example:
   stopwatch.stop()
 """
 
-from datetime import datetime
 import logging
+from datetime import datetime
 
 logger = logging.getLogger("ADTs")
 
