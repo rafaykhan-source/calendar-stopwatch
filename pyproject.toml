@@ -10,7 +10,15 @@ maintainers = [{ name = "Rafay Khan" }]
 description = "A stopwatch program that automatically logs sessions to Google Calendar."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "google-api-python-client",
+    "google-auth-httplib2",
+    "google-auth-oauthlib",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+development = ["black", "ruff", "pytype"]
 
 [tool.ruff]
 line-length = 88
@@ -18,7 +26,7 @@ select = [
     "E",  # pycodestyle
     "F",  # pyflakes
     "UP", # pyupgrade
-    "D",   # pydocstyle
+    "D",  # pydocstyle
 ]
 
 [tool.ruff.pydocstyle]
