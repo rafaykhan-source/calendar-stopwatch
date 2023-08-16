@@ -65,7 +65,7 @@ class Event:
         Args:
             session (Session): Session to construct event from.
         """
-        start_date, end_date = session.get_session_time_range()
+        start_date, end_date = session.get_time_range()
         duration = f"Duration: {session.get_duration()}"
         self.event = {
             "summary": f"{session.title}",

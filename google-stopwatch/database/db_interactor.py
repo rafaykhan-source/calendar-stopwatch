@@ -53,7 +53,7 @@ def extract_params_from_session(
     Returns:
         tuple[str, str, datetime, datetime]: params
     """
-    start, end = session.get_session_time_range()
+    start, end = session.get_time_range()
     params = (session.title, session.description, start, end)
     return params
 

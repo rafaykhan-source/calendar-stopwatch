@@ -79,8 +79,7 @@ class Session:
         return str(self.__stopwatch)
 
     # TODO: Add session.is_complete() method for internal checks and external use
-    # TODO: change the name of this method, remove session from name
-    def get_session_time_range(self) -> tuple[datetime]:
+    def get_time_range(self) -> tuple[datetime]:
         """Returns the start and end datetimes.
 
         Returns:
@@ -115,7 +114,7 @@ def main() -> None:
     print(session)
     session.begin()
     session.end()
-    print(str(session.get_session_time_range()) + ": " + session.get_duration())
+    print(str(session.get_time_range()) + ": " + session.get_duration())
     return
 
 
