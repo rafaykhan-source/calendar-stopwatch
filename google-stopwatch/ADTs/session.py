@@ -78,13 +78,28 @@ class Session:
         """
         return str(self.__stopwatch)
 
-    # TODO: Add session.is_complete() method for internal checks and external use
-    def get_time_range(self) -> tuple[datetime]:
-        """Returns the start and end datetimes.
+    def is_complete(self) -> bool:
+        """Returns whether session is complete.
+
+        Returns:
+            bool: Whether session is completed.
+        """
+        if self.__began and self.__ended:
+            return True
+
+        return False
+
+    def get_time_range(self) -> tuple[datetime] | None:
+        """Returns the start and end datetimes if complete.
+
+        Returns None if session is incomplete.
 
         Returns:
             tuple[datetime]: start and end datetimes
         """
+        if not self.is_complete():
+            logger.error("Error: Session is incomplete.")
+            return None
         return (self.__stopwatch.start_time, self.__stopwatch.stop_time)
 
     def __str__(self) -> str:
