@@ -19,12 +19,12 @@ from ADTs.session import Session
 logger = logging.getLogger("ADTs")
 
 
-# TODO: Refactor this into more of a wrapper - make get_event_dict construct dict
 class Event:
     """This class wraps information pertaining to a google calendar event."""
 
     def __init__(
         self,
+        session: Session = None,
         summary: str = "",
         description: str = "",
         start_date: datetime = None,
@@ -33,6 +33,7 @@ class Event:
         """Instantiates the event.
 
         Args:
+            session (Session, optional): Session to make event from. Defaults to None.
             summary (str, optional): Summary or event title. Defaults to "".
             description (str, optional): Details of the event.. Defaults to "".
             start_date (datetime, optional): Event's start datetime. Defaults to None.
@@ -44,41 +45,21 @@ class Event:
         if not isinstance(description, str):
             logging.error("Error: description is not of type str.")
             return
-
-        self.event = {
-            "summary": f"{summary}",
-            "description": f"{description}",
-            "start": {
-                "dateTime": f"{start_date.isoformat() if start_date else ''}",
-                "timeZone": "America/New_York",
-            },
-            "end": {
-                "dateTime": f"{end_date.isoformat() if end_date else ''}",
-                "timeZone": "America/New_York",
-            },
-        }
+        self.summary = summary
+        "The event title."
+        self.description = description
+        "The event description."
+        self.start_date = start_date
+        "The event start datetime."
+        self.end_date = end_date
+        "The event end datetime."
+        if session:
+            self.summary = session.title
+            self.description = (
+                session.description + f"Duration: {session.get_duration()}"
+            )
+            self.start_date, self.end_date = session.get_time_range()
         return
-
-    def create_event_from_session(self, session: Session) -> None:
-        """Constructs the event from a session instance.
-
-        Args:
-            session (Session): Session to construct event from.
-        """
-        start_date, end_date = session.get_time_range()
-        duration = f"Duration: {session.get_duration()}"
-        self.event = {
-            "summary": f"{session.title}",
-            "description": f"{session.description}\n{duration}",
-            "start": {
-                "dateTime": f"{start_date.isoformat()}",
-                "timeZone": "America/New_York",
-            },
-            "end": {
-                "dateTime": f"{end_date.isoformat()}",
-                "timeZone": "America/New_York",
-            },
-        }
 
     def get_event_dictionary(self) -> dict:
         """Returns the Event Information as a dictionary.
@@ -86,7 +67,19 @@ class Event:
         Returns:
             dict: event information dictionary
         """
-        return self.event
+        event = {
+            "summary": f"{self.summary}",
+            "description": f"{self.description}",
+            "start": {
+                "dateTime": f"{self.start_date.isoformat() if self.start_date else ''}",
+                "timeZone": "America/New_York",
+            },
+            "end": {
+                "dateTime": f"{self.end_date.isoformat() if self.end_date else ''}",
+                "timeZone": "America/New_York",
+            },
+        }
+        return event
 
     def __str__(self):
         """Returns string representation of the event.
@@ -95,10 +88,10 @@ class Event:
             str: Event's information.
         """
         return f"""
-Summary: {self.event["summary"]}
-Description: {self.event["description"]}
-Start Date: {self.event["start"]["dateTime"]}
-End Date: {self.event["end"]["dateTime"]}
+Summary: {self.summary}
+Description: {self.description}
+Start Date: {self.start_date.isoformat()}
+End Date: {self.end_date.isoformat()}
 """
 
 
@@ -113,8 +106,7 @@ def main() -> None:
     time.sleep(5)
     session.end()
 
-    event = Event()
-    event.create_event_from_session(session)
+    event = Event(session)
     print(event)
     event_info = event.get_event_dictionary()
     print(event_info)
