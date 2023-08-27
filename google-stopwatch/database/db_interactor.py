@@ -21,7 +21,7 @@ def create_sessions_table() -> None:
     con = sqlite3.connect("database/session-history.sqlite")
     cur = con.cursor()
     cur.execute(
-        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)"
+        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)",
     )
     con.close()
     return
