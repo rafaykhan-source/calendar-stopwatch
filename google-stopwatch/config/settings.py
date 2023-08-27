@@ -13,10 +13,9 @@ def get_logging_config() -> dict:
     Returns:
         dict: Logging config dictionary.
     """
-    with open("config/logging_config.yml", encoding="utf-8") as file:
-        config = yaml.safe_load(file)
+    with open("config/logging_config.yml", encoding="utf-8") as stream:
+        return yaml.safe_load(stream)
 
-    return config
 
 
 def main() -> None:
