@@ -1,7 +1,7 @@
 """A module responsible for google calendar API interactions.
 
 This module contains several functions relevant to interacting
-with the google calendar API (e.g. grabbing credentials, 
+with the google calendar API (e.g. grabbing credentials,
 starting a session, adding and reading events)
 
 Typical usage example:
