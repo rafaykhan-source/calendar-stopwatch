@@ -1,6 +1,6 @@
 """A class representing a Session.
 
-This module defines the Session ADT, which stores information and supports 
+This module defines the Session ADT, which stores information and supports
 operations relevant to logic associated utilizing a StopWatch and information
 of why a client needs the use the stopwatch.
 
@@ -118,7 +118,8 @@ Duration: {self.__stopwatch}
 def main() -> None:
     """Unit Testing."""
     session = Session(
-        title="Marshmallow Development", description="Doing Intensive Refactoring"
+        title="Marshmallow Development",
+        description="Doing Intensive Refactoring",
     )
     session.end()
     print(session)
