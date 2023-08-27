@@ -67,7 +67,7 @@ class Event:
         Returns:
             dict: event information dictionary
         """
-        event = {
+        return {
             "summary": f"{self.summary}",
             "description": f"{self.description}",
             "start": {
@@ -79,7 +79,6 @@ class Event:
                 "timeZone": "America/New_York",
             },
         }
-        return event
 
     def __str__(self) -> str:
         """Returns string representation of the event.
