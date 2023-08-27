@@ -4,13 +4,12 @@ This module should hold several functions related to data production
 and consumption.
 """
 
-import logging
 import sqlite3
 import sys
 from datetime import datetime
 
 sys.path.append("./")
-from ADTs import Session
+from adt import Session
 
 # TODO: Add logging
 # logger = logging.getLogger("database")

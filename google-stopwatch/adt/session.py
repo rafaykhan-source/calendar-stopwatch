@@ -15,7 +15,7 @@ import logging
 import time
 from datetime import datetime
 
-from ADTs.stopwatch import StopWatch
+from adt.stopwatch import StopWatch
 
 logger = logging.getLogger("ADTs")
 

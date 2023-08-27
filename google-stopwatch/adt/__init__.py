@@ -4,5 +4,5 @@ The session and event ADT contain information for creating a google calendar
 event and hosting a stopwatch session.
 """
 
-from ADTs.event import Event
-from ADTs.session import Session
+from adt.event import Event
+from adt.session import Session

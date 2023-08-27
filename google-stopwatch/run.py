@@ -17,7 +17,7 @@ import logging
 import logging.config
 
 import calendar_interactor as cal
-from ADTs import Event, Session
+from adt import Event, Session
 from config import settings as stg
 from database import db_interactor as db
 

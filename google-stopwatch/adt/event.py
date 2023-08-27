@@ -14,7 +14,7 @@ import logging
 import time
 from datetime import datetime
 
-from ADTs.session import Session
+from adt.session import Session
 
 logger = logging.getLogger("ADTs")
 
