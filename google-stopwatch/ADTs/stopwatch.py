@@ -1,6 +1,6 @@
 """A class representing a StopWatch.
 
-This module defines the StopWatch ADT, which stores information and supports 
+This module defines the StopWatch ADT, which stores information and supports
 operations relevant to logic starting and stopping a stopwatch.
 
 Typical usage example:
