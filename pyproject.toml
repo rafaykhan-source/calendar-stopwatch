@@ -21,13 +21,29 @@ dependencies = [
 development = ["black", "ruff", "pytype"]
 
 [tool.ruff]
+# Adjust line-length to match black formatter
 line-length = 88
 select = [
-    "E",  # pycodestyle
-    "F",  # pyflakes
-    "UP", # pyupgrade
-    "D",  # pydocstyle
+    "A",   # flake8-builtins
+    "BLE", # flake8-blind-except
+    "C4",  # flake8-comprehensions
+    "C90", # mccabe
+    "COM", # flake8-commas
+    "E",   # pycodestyle
+    "EM",  # flake8-errmsg
+    "W",   # pycodestyle
+    "F",   # pyflakes
+    "FBT", # flake8-boolean-trap
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "D",   # pydocstyle
+    "ANN", # flake8-annotations
+    "Q",   # flake8-quotes
+    "RET", # flake8-return
+    "I",   # isort
+    "N",   # pep8-naming
 ]
+include = ["*.py", "*.ipynb", "**/pyproject.toml"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
