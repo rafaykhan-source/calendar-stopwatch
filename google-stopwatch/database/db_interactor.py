@@ -28,6 +28,11 @@ def create_sessions_table() -> None:
 
 
 def add_session(session: Session) -> None:
+    """Adds session to project database.
+
+    Args:
+        session (Session): session to add to database
+    """
     params = extract_params_from_session(session)
 
     con = sqlite3.connect("database/session-history.sqlite")
