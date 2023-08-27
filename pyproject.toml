@@ -44,6 +44,7 @@ select = [
     "N",   # pep8-naming
 ]
 include = ["*.py", "*.ipynb", "**/pyproject.toml"]
+ignore = ["ANN101"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
