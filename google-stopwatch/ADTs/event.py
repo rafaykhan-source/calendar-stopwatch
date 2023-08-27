@@ -81,7 +81,7 @@ class Event:
         }
         return event
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Returns string representation of the event.
 
         Returns:
