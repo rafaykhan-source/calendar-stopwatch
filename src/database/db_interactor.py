@@ -41,6 +41,10 @@ def add_session(session: Session) -> None:
             params,
         )
     con.close()
+    logging.info(
+        "Added Session %s to Database.",
+        session.title,
+    )
     return
 
 
