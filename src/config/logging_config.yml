@@ -17,6 +17,14 @@ handlers:
     maxBytes: 524288 #.5MB
     backupCount: 3
     encoding: utf8
+  dbHandler:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: default
+    filename: ../logs/database.log
+    maxBytes: 524288 #.5MB
+    backupCount: 3
+    encoding: utf8
 loggers:
   run:
     level: DEBUG
@@ -25,6 +33,10 @@ loggers:
   ADTs:
     level: DEBUG
     handlers: [ADTHandler]
+    propagate: no
+  database:
+    level: DEBUG
+    handlers: [dbHandler]
     propagate: no
 root:
   level: DEBUG
