@@ -23,7 +23,7 @@ def create_sessions_table() -> None:
         "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)",
     )
     con.close()
-    logging.info("Created Sessions Table in Database.")
+    logger.info("Created Sessions Table in Database.")
     return
 
 
@@ -42,7 +42,7 @@ def add_session(session: Session) -> None:
             params,
         )
     con.close()
-    logging.info(
+    logger.info(
         "Added Session %s to Database.",
         session.title,
     )
