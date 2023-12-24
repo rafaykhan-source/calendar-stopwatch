@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-development = ["black", "ruff", "pytype"]
+development = ["black", "ruff", "pytype", "pre-commit"]
 
 [tool.ruff]
 # Adjust line-length to match black formatter
