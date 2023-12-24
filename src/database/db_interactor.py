@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 sys.path.append("./")
-from adt import Session
+from adt import Session  # noqa: E402
 
 logger = logging.getLogger("database")
 
@@ -20,7 +20,7 @@ def create_sessions_table() -> None:
     con = sqlite3.connect("database/session-history.sqlite")
     cur = con.cursor()
     cur.execute(
-        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)",
+        "CREATE TABLE IF NOT EXISTS sessions(id INTEGER PRIMARY KEY, title TEXT, description TEXT, start TIMESTAMP, end TIMESTAMP)",  # noqa: E501
     )
     con.close()
     logger.info("Created Sessions Table in Database.")
