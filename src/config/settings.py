@@ -17,7 +17,6 @@ def get_logging_config() -> dict:
         return yaml.safe_load(stream)
 
 
-
 def main() -> None:
     """Unit Testing."""
     print(get_logging_config())
