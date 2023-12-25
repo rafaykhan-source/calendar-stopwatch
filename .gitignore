@@ -5,3 +5,5 @@ logs/*.log
 *.egg-info
 src/config/*.json
 src/database/session-history.sqlite
+src/docs/_build/
+src/docs/conf.py
