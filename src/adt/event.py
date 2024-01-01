@@ -24,11 +24,11 @@ class Event:
 
     def __init__(
         self,
-        session: Session = None,
+        session: Session | None = None,
         summary: str = "",
         description: str = "",
-        start_date: datetime = None,
-        end_date: datetime = None,
+        start_date: datetime | None = None,
+        end_date: datetime | None = None,
     ) -> None:
         """Instantiates the event.
 
@@ -89,8 +89,8 @@ class Event:
         return f"""
 Summary: {self.summary}
 Description: {self.description}
-Start Date: {self.start_date.isoformat()}
-End Date: {self.end_date.isoformat()}
+Start Date: {self.start_date.isoformat() if self.start_date else ""}
+End Date: {self.end_date.isoformat() if self.end_date else ""}
 """
 
 
