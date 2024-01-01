@@ -2,7 +2,6 @@
 **/__pycache__/**
 build/
 logs/*.log
-*.egg-info
 src/config/*.json
 src/database/session-history.sqlite
 docs/_build/
