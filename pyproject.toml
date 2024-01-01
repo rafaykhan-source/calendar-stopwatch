@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "google_stopwatch"
+name = "calendar_stopwatch"
 version = "0.0.1"
 authors = [{ name = "Rafay Khan" }]
 maintainers = [{ name = "Rafay Khan" }]
