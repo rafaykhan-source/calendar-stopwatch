@@ -51,7 +51,7 @@ def add_session(session: Session) -> None:
 
 def extract_params_from_session(
     session: Session,
-) -> tuple[str, str, datetime, datetime]:
+) -> tuple[str, str, datetime | None, datetime | None]:
     """Extracts parameters for sqlite query from session.
 
     Client should also provide whether event has been posted or not.

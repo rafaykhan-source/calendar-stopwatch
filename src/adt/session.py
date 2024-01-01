@@ -89,7 +89,7 @@ class Session:
 
         return False
 
-    def get_time_range(self) -> tuple[datetime] | None:
+    def get_time_range(self) -> tuple[datetime | None, datetime | None]:
         """Returns the start and end datetimes if complete.
 
         Returns None if session is incomplete.
@@ -99,7 +99,7 @@ class Session:
         """
         if not self.is_complete():
             logger.error("Error: Session is incomplete.")
-            return None
+            return (None, None)
         return (self.__stopwatch.start_time, self.__stopwatch.stop_time)
 
     def __str__(self) -> str:

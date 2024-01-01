@@ -26,9 +26,9 @@ class StopWatch:
 
     def __init__(self) -> None:
         """Instantiates the stopwatch."""
-        self.start_time: datetime = None
+        self.start_time: datetime | None = None
         "The start date and time of the StopWatch"
-        self.stop_time: datetime = None
+        self.stop_time: datetime | None = None
         "The stop date and time of the StopWatch"
         return
 
