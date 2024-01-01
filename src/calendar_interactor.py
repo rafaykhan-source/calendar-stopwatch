@@ -73,12 +73,12 @@ def add_event(event: Event) -> None:
         event (Event): event to add to google calendar.
     """
     service = get_service()
-    event = (
+    cal_event = (
         service.events()
         .insert(calendarId="primary", body=event.get_event_dictionary())
         .execute()
     )
-    print(f"Event created: {event.get('htmlLink')}")
+    print(f"Event created: {cal_event.get('htmlLink')}")
     return
 
 
