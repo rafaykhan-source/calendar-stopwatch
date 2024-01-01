@@ -55,7 +55,7 @@ def get_credentials() -> Credentials:
     return creds
 
 
-def get_service() -> any:
+def get_service():  # noqa
     """Returns service google calendar interactions."""
     creds = get_credentials()
     try:
