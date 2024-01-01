@@ -17,16 +17,16 @@ import logging
 import logging.config
 
 import calendar_interactor as cal
+import database.db_interactor as db
 from adt import Event, Session
-from config import settings as stg
-from database import db_interactor as db
+from config.settings import get_logging_config
 
 logger = logging.getLogger("run")
 
 
 def __configure_logging() -> None:
     """Configures logging for the program."""
-    config = stg.get_logging_config()
+    config = get_logging_config()
     logging.config.dictConfig(config)
 
     return
