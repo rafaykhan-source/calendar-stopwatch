@@ -2,6 +2,9 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+[tool.distutils.egg_info]
+egg_base = "build"
+
 [project]
 name = "calendar_stopwatch"
 version = "0.0.1"
@@ -19,6 +22,15 @@ dependencies = [
 
 [project.optional-dependencies]
 development = ["black", "ruff", "mypy", "pre-commit", "sphinx"]
+
+[[tool.mypy.overrides]]
+module = [
+    "adt.*",
+    "config.*",
+    "database.*",
+    "calendar_interactor"
+]
+ignore_missing_imports = true
 
 [tool.ruff]
 # Adjust line-length to match black formatter
