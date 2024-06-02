@@ -21,20 +21,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-development = ["black", "ruff", "mypy", "pre-commit", "sphinx"]
+development = ["ruff", "mypy", "pre-commit", "sphinx"]
 
 [[tool.mypy.overrides]]
-module = [
-    "adt.*",
-    "config.*",
-    "database.*",
-    "calendar_interactor"
-]
+module = ["adt.*", "config.*", "database.*", "calendar_interactor"]
 ignore_missing_imports = true
 
 [tool.ruff]
-# Adjust line-length to match black formatter
-line-length = 88
 select = [
     "F",   # pyflakes
     "E",   # pycodestyle
