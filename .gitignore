@@ -1,8 +1,5 @@
-.vscode
 **/__pycache__/**
 build/
 logs/*.log
 src/config/*.json
 src/database/session-history.sqlite
-docs/_build/
-docs/conf.py
