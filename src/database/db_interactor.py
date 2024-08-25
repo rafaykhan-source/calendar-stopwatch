@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 sys.path.append("./")
-from adt import Session  # noqa: E402
+from adt import Session
 
 logger = logging.getLogger("database")
 
@@ -24,7 +24,6 @@ def create_sessions_table() -> None:
     )
     con.close()
     logger.info("Created Sessions Table in Database.")
-    return
 
 
 def add_session(session: Session) -> None:
@@ -46,7 +45,6 @@ def add_session(session: Session) -> None:
         "Added Session %s to Database.",
         session.title,
     )
-    return
 
 
 def extract_params_from_session(
@@ -83,7 +81,6 @@ def main() -> None:
     # print(row[3], type(row[3]))
     # print(row[4], type(row[4]))
     # con.close()
-    return
 
 
 if __name__ == "__main__":

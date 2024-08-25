@@ -1,15 +1,8 @@
-#!/usr/bin/env python
+"""A module for running the calendar-stopwatch program.
 
-"""A module for running the google-stopwatch program.
-
-This module is responsible for running the google-stopwatch
+This module is responsible for running the calendar-stopwatch
 program. Start and stop a session and have it retroactively
-logged on google calendar upon completion.
-
-Typical usage example:
-
-$ python run.py "Cooking Food"
-$ python run.py "Session Title" -d "Stopwatch Session Description"
+logged to your calendar upon completion.
 """
 
 import argparse
@@ -29,8 +22,6 @@ def __configure_logging() -> None:
     config = get_logging_config()
     logging.config.dictConfig(config)
 
-    return
-
 
 def __get_args() -> argparse.Namespace:
     """Returns arguments User supplied to program.
@@ -39,17 +30,17 @@ def __get_args() -> argparse.Namespace:
         argparse.Namespace: User args with named attributes.
     """
     parser = argparse.ArgumentParser(
-        prog="google-stopwatch",
-        description="A stopwatch that logs your session on google calendar.",
+        prog="calendar-stopwatch",
+        description="A stopwatch that logs your session on calendar.",
     )
     parser.add_argument(
         "title",
-        help="name of the session (and google calendar event)",
+        help="name of the session (and calendar event)",
     )
     parser.add_argument(
         "-d",
         metavar="description",
-        help="description of the session (and google calendar event)",
+        help="description of the session (and calendar calendar event)",
         default="",
         required=False,
         dest="description",
@@ -58,7 +49,7 @@ def __get_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    """Runs the google-stopwatch program."""
+    """Runs the calendar-stopwatch program."""
     __configure_logging()
     logger.info("Configured logging.")
 
@@ -78,8 +69,6 @@ def main() -> None:
     event = Event(session)
     cal.add_event(event)
     db.add_session(session)
-
-    return
 
 
 if __name__ == "__main__":

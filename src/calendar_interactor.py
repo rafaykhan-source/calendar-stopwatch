@@ -13,12 +13,13 @@ Typical usage example:
 import datetime
 import os.path
 
-from adt import Event
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+
+from adt import Event
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
@@ -79,7 +80,6 @@ def add_event(event: Event) -> None:
         .execute()
     )
     print(f"Event created: {cal_event.get('htmlLink')}")
-    return
 
 
 def read_event(amount: int) -> None:
@@ -125,7 +125,6 @@ def main() -> None:
     # )
     # add_event(event)
     read_event(5)
-    return
 
 
 if __name__ == "__main__":

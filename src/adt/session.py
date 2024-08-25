@@ -45,7 +45,6 @@ class Session:
         "Whether the session has begun."
         self.__ended: bool = False
         "Whether the session has ended."
-        return
 
     def begin(self) -> None:
         """Begins the Session."""
@@ -84,10 +83,7 @@ class Session:
         Returns:
             bool: Whether session is completed.
         """
-        if self.__began and self.__ended:
-            return True
-
-        return False
+        return self.__began and self.__ended
 
     def get_time_range(self) -> tuple[datetime | None, datetime | None]:
         """Returns the start and end datetimes if complete.
@@ -131,7 +127,6 @@ def main() -> None:
     session.begin()
     session.end()
     print(str(session.get_time_range()) + ": " + session.get_duration())
-    return
 
 
 if __name__ == "__main__":

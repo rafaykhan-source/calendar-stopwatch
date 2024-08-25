@@ -115,7 +115,6 @@ def main() -> None:
     #     start_date=datetime(year=2023, month=7, day=29, hour=16),
     #     end_date=datetime(year=2023, month=7, day=29, hour=18),
     # )
-    return
 
 
 if __name__ == "__main__":

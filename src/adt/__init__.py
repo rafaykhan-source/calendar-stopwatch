@@ -4,5 +4,7 @@ The session and event ADT contain information for creating a google calendar
 event and hosting a stopwatch session.
 """
 
-from adt.event import Event
-from adt.session import Session
+from .event import Event
+from .session import Session
+
+__all__ = ["Event", "Session"]

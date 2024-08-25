@@ -30,7 +30,6 @@ class StopWatch:
         "The start date and time of the StopWatch"
         self.stop_time: datetime | None = None
         "The stop date and time of the StopWatch"
-        return
 
     def start(self) -> None:
         """Starts the StopWatch."""
@@ -79,7 +78,6 @@ def main() -> None:
     print(stopwatch)
     stopwatch.start()
     stopwatch.stop()
-    return
 
 
 if __name__ == "__main__":

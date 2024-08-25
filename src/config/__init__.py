@@ -1,3 +1,5 @@
 """This package maintains everything related to project configuration."""
 
-import config.settings
+from . import settings
+
+__all__ = ["settings"]
