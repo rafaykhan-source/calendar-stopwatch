@@ -1,5 +1,7 @@
 **/__pycache__/**
-build/
+*.lock
+*.egg-info
+build
 logs/*.log
-src/config/*.json
-src/database/session-history.sqlite
+src/calendar_stopwatch/config/*.json
+src/calendar_stopwatch/database/session-history.sqlite
