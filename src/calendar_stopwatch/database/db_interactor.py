@@ -34,7 +34,7 @@ def add_session(session: Session) -> None:
     """
     params = extract_params_from_session(session)
 
-    con = sqlite3.connect("database/session-history.sqlite")
+    con = sqlite3.connect("src/calendar_stopwatch/database/session-history.sqlite")
     with con:
         con.execute(
             "INSERT INTO sessions (title, description, start, end) VALUES (?, ?, ?, ?)",

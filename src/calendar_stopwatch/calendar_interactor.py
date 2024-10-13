@@ -13,13 +13,12 @@ Typical usage example:
 import datetime
 import os.path
 
+from adt import Event
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
-from adt import Event
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
@@ -36,8 +35,11 @@ def get_credentials() -> Credentials:
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists("config/token.json"):
-        creds = Credentials.from_authorized_user_file("config/token.json", SCOPES)
+    if os.path.exists("src/calendar_stopwatch/config/token.json"):
+        creds = Credentials.from_authorized_user_file(
+            "src/calendar_stopwatch/config/token.json",
+            SCOPES,
+        )
 
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -45,12 +47,12 @@ def get_credentials() -> Credentials:
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                "config/credentials.json",
+                "src/calendar_stopwatch/config/credentials.json",
                 SCOPES,
             )
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open("config/token.json", "w") as token:
+        with open("src/calendar_stopwatch/config/token.json", "w") as token:
             token.write(creds.to_json())
 
     return creds
