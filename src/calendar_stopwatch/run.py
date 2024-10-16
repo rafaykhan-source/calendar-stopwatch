@@ -66,7 +66,7 @@ def main() -> None:
     logger.info("User requested session stop.")
     session.end()
 
-    event = Event(session)
+    event = Event(session=session)
     cal.add_event(event)
     db.add_session(session)
 

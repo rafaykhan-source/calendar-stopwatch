@@ -1,8 +1,7 @@
 """A class representing a Session.
 
 This module defines the Session ADT, which stores information and supports
-operations relevant to logic associated utilizing a StopWatch and information
-of why a client needs the use the stopwatch.
+operations relevant to logic associated with a timed session.
 
 Typical usage example:
 
@@ -13,38 +12,23 @@ Typical usage example:
 
 import logging
 import time
+from dataclasses import dataclass, field
 from datetime import datetime
 
-from adt.stopwatch import StopWatch
+from adt.timer import Timer
 
 logger = logging.getLogger("ADTs")
 
 
+@dataclass
 class Session:
-    """This class wraps information pertaining to a stopwatch session.
+    """This class wraps information pertaining to a timer session."""
 
-    Attributes:
-        title (str): Name of the session.
-        description (str): Additional details of the session.
-    """
-
-    def __init__(self, title: str, description: str) -> None:
-        """Instantiates the session.
-
-        Args:
-            title (str): Name of the session.
-            description (str): Additional details of the session.
-        """
-        self.title: str = title
-        "A general title for the timed session."
-        self.description: str = description
-        "A description for the session."
-        self.__stopwatch: StopWatch = StopWatch()
-        "A stopwatch for the session."
-        self.__began: bool = False
-        "Whether the session has begun."
-        self.__ended: bool = False
-        "Whether the session has ended."
+    title: str
+    description: str
+    __timer: Timer = field(init=False, default_factory=Timer)
+    __began: bool = field(init=False, repr=False, default=False)
+    __ended: bool = field(init=False, repr=False, default=False)
 
     def begin(self) -> None:
         """Begins the Session."""
@@ -52,7 +36,7 @@ class Session:
             logger.error("Error: Cannot begin session that has already begun.")
             return
         self.__began = True
-        self.__stopwatch.start()
+        self.__timer.start()
         logger.info("Session has begun.")
         return
 
@@ -65,7 +49,7 @@ class Session:
             logger.error("Error: Cannot end session that has already ended.")
             return
         self.__ended = True
-        self.__stopwatch.stop()
+        self.__timer.stop()
         logger.info("Session has ended.")
         return
 
@@ -75,7 +59,7 @@ class Session:
         Returns:
             str: duration of the session
         """
-        return str(self.__stopwatch)
+        return str(self.__timer)
 
     def is_complete(self) -> bool:
         """Returns whether session is complete.
@@ -96,7 +80,7 @@ class Session:
         if not self.is_complete():
             logger.error("Error: Session is incomplete.")
             return (None, None)
-        return (self.__stopwatch.start_time, self.__stopwatch.stop_time)
+        return (self.__timer.start_time, self.__timer.stop_time)
 
     def __str__(self) -> str:
         """Returns a string representation of the session.
@@ -107,7 +91,7 @@ class Session:
         return f"""
 Title: {self.title}
 Description: {self.description}
-Duration: {self.__stopwatch}
+Duration: {self.get_duration()}
 """
 
 

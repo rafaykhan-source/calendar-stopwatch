@@ -6,12 +6,12 @@ to a google calendar event.
 Typical usage example:
 
   event = Event()
-  event.create_event_from_session(session)
   event_info = event.get_event_dictionary()
 """
 
 import logging
 import time
+from dataclasses import InitVar, dataclass
 from datetime import datetime
 
 from adt.session import Session
@@ -19,47 +19,28 @@ from adt.session import Session
 logger = logging.getLogger("ADTs")
 
 
+@dataclass
 class Event:
     """This class wraps information pertaining to a google calendar event."""
 
-    def __init__(
-        self,
-        session: Session | None = None,
-        summary: str = "",
-        description: str = "",
-        start_date: datetime | None = None,
-        end_date: datetime | None = None,
-    ) -> None:
-        """Instantiates the event.
+    summary: str = ""
+    description: str = ""
+    start_date: datetime | None = None
+    end_date: datetime | None = None
+    session: InitVar[Session | None] = None
+
+    def __post_init__(self, session: Session | None) -> None:
+        """Initializes an event from a session.
 
         Args:
-            session (Session, optional): Session to make event from. Defaults to None.
-            summary (str, optional): Summary or event title. Defaults to "".
-            description (str, optional): Details of the event.. Defaults to "".
-            start_date (datetime, optional): Event's start datetime. Defaults to None.
-            end_date (datetime, optional): Event's end datetime. Defaults to None.
+            session (Session | None): The session to intialize an event from.
         """
-        if not isinstance(summary, str):
-            logging.error("Error: summary is not of type str.")
-            return
-        if not isinstance(description, str):
-            logging.error("Error: description is not of type str.")
-            return
-        self.summary = summary
-        "The event title."
-        self.description = description
-        "The event description."
-        self.start_date = start_date
-        "The event start datetime."
-        self.end_date = end_date
-        "The event end datetime."
         if session:
             self.summary = session.title
             self.description = (
                 session.description + f"Duration: {session.get_duration()}"
             )
             self.start_date, self.end_date = session.get_time_range()
-        return
 
     def get_event_dictionary(self) -> dict:
         """Returns the Event Information as a dictionary.
@@ -105,7 +86,7 @@ def main() -> None:
     time.sleep(5)
     session.end()
 
-    event = Event(session)
+    event = Event(session=session)
     print(event)
     event_info = event.get_event_dictionary()
     print(event_info)
