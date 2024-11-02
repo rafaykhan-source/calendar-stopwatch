@@ -11,11 +11,6 @@ dependencies = [
     "pyyaml",
 ]
 
-[tool.uv]
-dev-dependencies = [
-    "pre-commit>=4.0.1",
-]
-
 [tool.ruff.lint]
 select = [
     "F",   # pyflakes
