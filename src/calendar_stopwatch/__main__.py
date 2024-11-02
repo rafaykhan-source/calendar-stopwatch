@@ -71,5 +71,4 @@ def main() -> None:
     db.add_session(session)
 
 
-if __name__ == "__main__":
-    main()
+main()
