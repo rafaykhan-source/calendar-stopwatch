@@ -9,10 +9,10 @@ import argparse
 import logging
 import logging.config
 
-import calendar_interactor as cal
-import database.db_interactor as db
-from adt import Event, Session
-from config.settings import get_logging_config
+import calendar_stopwatch.calendar_interactor as cal
+import calendar_stopwatch.database.db_interactor as db
+from calendar_stopwatch.adt import Event, Session
+from calendar_stopwatch.config.settings import get_logging_config
 
 logger = logging.getLogger("run")
 
@@ -40,7 +40,7 @@ def __get_args() -> argparse.Namespace:
     parser.add_argument(
         "-d",
         metavar="description",
-        help="description of the session (and calendar calendar event)",
+        help="description of the session (and calendar event)",
         default="",
         required=False,
         dest="description",

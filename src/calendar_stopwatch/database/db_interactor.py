@@ -10,7 +10,7 @@ import sys
 from datetime import datetime
 
 sys.path.append("./")
-from adt import Session
+from calendar_stopwatch.adt import Session
 
 logger = logging.getLogger("database")
 

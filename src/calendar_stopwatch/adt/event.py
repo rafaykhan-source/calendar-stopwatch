@@ -14,7 +14,7 @@ import time
 from dataclasses import InitVar, dataclass
 from datetime import datetime
 
-from adt.session import Session
+from calendar_stopwatch.adt.session import Session
 
 logger = logging.getLogger("ADTs")
 

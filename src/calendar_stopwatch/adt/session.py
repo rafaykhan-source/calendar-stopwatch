@@ -15,7 +15,7 @@ import time
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from adt.timer import Timer
+from calendar_stopwatch.adt.timer import Timer
 
 logger = logging.getLogger("ADTs")
 
